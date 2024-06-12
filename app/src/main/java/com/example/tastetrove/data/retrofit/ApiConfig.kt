@@ -1,5 +1,7 @@
 package com.example.tastetrove.data.retrofit
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.tastetrove.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -8,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    fun ApiService(token : String): ApiService {
+    fun ApiService(context : Context, token : String): ApiService {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(
                 if (BuildConfig.DEBUG)
@@ -27,6 +29,7 @@ object ApiConfig {
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor)
+            .addInterceptor(ChuckerInterceptor(context))
             .build()
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)

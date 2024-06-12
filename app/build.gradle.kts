@@ -13,7 +13,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "BASE_URL", "\"http://34.101.216.113:3000/\"")
+        buildConfigField("String", "BASE_URL", "\"https://34.101.216.113:3000/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
