@@ -23,6 +23,7 @@ object ApiConfig {
                 .build()
             chain.proceed(requestHeaders)
         }
+
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor)

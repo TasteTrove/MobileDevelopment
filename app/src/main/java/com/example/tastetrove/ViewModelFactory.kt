@@ -7,6 +7,7 @@ import com.example.tastetrove.data.di.Injection
 import com.example.tastetrove.data.repo.UserRepository
 import com.example.tastetrove.view.login.LoginViewModel
 import com.example.tastetrove.view.main.MainViewModel
+import com.example.tastetrove.view.signup.SignupViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -18,6 +19,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SignupViewModel::class.java) -> {
+                SignupViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

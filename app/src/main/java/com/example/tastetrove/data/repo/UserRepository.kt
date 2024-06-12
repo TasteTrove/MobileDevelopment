@@ -30,11 +30,11 @@ class UserRepository private constructor(
 
 
     fun signup(
-        name: String, email: String, pass: String
+        email: String, pass: String, name: String
     ): LiveData<Result<RegisterResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.signup(name, email, pass)
+            val response = apiService.register(email, pass, name)
             emit(Result.Success(response))
         } catch (e: HttpException) {
             Log.d("register", e.message.toString())

@@ -50,7 +50,7 @@ class SignupActivity : AppCompatActivity() {
                 val name = nameTextView.text.toString()
                 val email = emailEditText.text.toString()
                 val password = passwordEditText.text.toString()
-                viewModel.signup(name, email, password).observe(this@SignupActivity) { result ->
+                viewModel.register(email, password, name).observe(this@SignupActivity) { result ->
                     when (result){
                         is Result.Loading -> {
                             showLoading(true)
