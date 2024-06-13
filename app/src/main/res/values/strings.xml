@@ -24,4 +24,8 @@
     <string name="camera">Camera</string>
     <string name="profile">Profile</string>
     <string name="welcome_text">WELCOME\nTo TasteTrove"</string>
+    <string name="alertMassageLogout">Are you sure exit the Story App?</string>
+    <string name="yesLogout">Yes</string>
+    <string name="cancelLogout">Cancel</string>
+    <string name="food_item">Food Item</string>
 </resources>

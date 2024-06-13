@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import com.example.tastetrove.data.pref.UserModel
 import com.example.tastetrove.data.pref.UserPreference
 import com.example.tastetrove.data.response.ErrorResponse
+import com.example.tastetrove.data.response.ListStoryItem
 import com.example.tastetrove.data.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -30,11 +31,11 @@ class UserRepository private constructor(
 
 
     fun signup(
-        email: String, pass: String, name: String
+        name: String, email: String, pass: String
     ): LiveData<Result<RegisterResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.register(email, pass, name)
+            val response = apiService.register(name, email, pass)
             emit(Result.Success(response))
         } catch (e: HttpException) {
             Log.d("register", e.message.toString())
@@ -64,6 +65,11 @@ class UserRepository private constructor(
 
     suspend fun logout() {
         userPreference.logout()
+    }
+
+    suspend fun getFoods(): List<ListStoryItem>? {
+        val response = apiService.getFood()
+        return if (!response.error!!) response.story else null
     }
 
     companion object {

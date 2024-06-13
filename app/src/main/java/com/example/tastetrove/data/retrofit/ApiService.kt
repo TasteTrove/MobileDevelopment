@@ -1,18 +1,20 @@
 package com.example.tastetrove.data.retrofit
 
+import com.example.tastetrove.data.response.FoodResponse
 import com.example.tastetrove.data.response.auth.LoginResponse
 import com.example.tastetrove.data.response.auth.RegisterResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
     @FormUrlEncoded
     @POST("register")
     suspend fun register(
-        @Field("email") name: String,
-        @Field("password") email: String,
-        @Field("nama") password: String
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String
     ): RegisterResponse
 
     @FormUrlEncoded
@@ -21,6 +23,9 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
+
+    @GET("foods")
+    suspend fun getFood(): FoodResponse
 
 
 

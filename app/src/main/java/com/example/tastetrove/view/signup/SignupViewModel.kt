@@ -7,6 +7,6 @@ import com.example.tastetrove.data.response.Result
 import com.example.tastetrove.data.response.auth.RegisterResponse
 
 class SignupViewModel (private val repository: UserRepository) : ViewModel() {
-    fun register(email: String, pass: String, name: String): LiveData<Result<RegisterResponse>> =
+    fun register(name: String, email: String, pass: String): LiveData<Result<RegisterResponse>> =
         repository.signup(name, email, pass)
 }
