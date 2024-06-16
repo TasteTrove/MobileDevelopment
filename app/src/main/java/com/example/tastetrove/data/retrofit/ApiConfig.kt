@@ -9,8 +9,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object  ApiConfig {
-    fun ApiService(context : Context, token : String): ApiService {
+object ApiConfig {
+
+    fun apiService(context: Context, token: String): ApiService {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(
                 if (BuildConfig.DEBUG)
@@ -38,4 +39,23 @@ object  ApiConfig {
             .build()
         return retrofit.create(ApiService::class.java)
     }
+
+    inline fun <reified T> getApiService(context: Context, baseUrl: String): T {
+        val loggingInterceptor =
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor(ChuckerInterceptor(context))
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+        return retrofit.create(T::class.java)
+    }
+
 }
