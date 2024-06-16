@@ -59,12 +59,12 @@ class SignupActivity : AppCompatActivity() {
                         is Result.Success -> {
                             showLoading(false)
                             setupAction(result.data.message)
-                            Log.d("Signup Berhasil", result.data.message)
+                            Log.d("Register Berhasil", result.data.message)
                         }
                         is Result.Error ->  {
                             showLoading(false)
                             setupFail(result.error)
-                            Log.e("Signup Error", result.error)
+                            Log.e("Register Error", result.error)
                         }
                     }
                 }

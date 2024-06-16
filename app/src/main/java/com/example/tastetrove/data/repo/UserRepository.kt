@@ -13,6 +13,9 @@ import kotlinx.coroutines.flow.Flow
 import com.example.tastetrove.data.response.Result
 import com.example.tastetrove.data.response.auth.LoginResponse
 import com.example.tastetrove.data.response.auth.RegisterResponse
+import com.example.tastetrove.data.retrofit.ApiConfig
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.HttpException
 
 class UserRepository private constructor(
@@ -29,7 +32,10 @@ class UserRepository private constructor(
         return userPreference.getSession()
     }
 
-
+    suspend fun getFoods(): List<ListStoryItem>? {
+        val response = apiService.getFoods()
+        return if (!response.error!!) response.story else null
+    }
     fun signup(
         name: String, email: String, pass: String
     ): LiveData<Result<RegisterResponse>> = liveData {
@@ -67,18 +73,7 @@ class UserRepository private constructor(
         userPreference.logout()
     }
 
-    suspend fun getFoods(): List<ListStoryItem>? {
-        val response = apiService.getFood()
-        return if (!response.error!!) response.story else null
-    }
-
     companion object {
-        @Volatile
-        private var instance: UserRepository? = null
-        fun getInstance(userPreference: UserPreference, apiService: ApiService
-        ): UserRepository =
-            instance ?: synchronized(this) {
-                instance ?: UserRepository(userPreference, apiService)
-            }.also { instance = it }
+        fun getInstance(userPreference: UserPreference, apiService: ApiService) = UserRepository(userPreference, apiService)
     }
 }

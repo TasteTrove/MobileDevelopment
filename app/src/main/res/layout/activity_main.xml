@@ -6,20 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".view.main.MainActivity">
 
-    <!-- Header Layout -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:padding="16dp">
 
-    <!-- RecyclerView -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TasteTrove"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/action_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_logout_24"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFood"
+        android:id="@+id/rvStory"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginVertical="16dp"
         android:layout_marginHorizontal="16dp"
         android:overScrollMode="never"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
     <!-- Bottom Navigation -->
@@ -42,6 +87,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/home"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:src="@drawable/baseline_home_24_white"
@@ -63,6 +109,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/search"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:src="@drawable/baseline_search_24_white"
@@ -84,6 +131,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/camera"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:src="@drawable/baseline_camera_24_white"
@@ -105,6 +153,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/profile"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:src="@drawable/baseline_person_24_white"
@@ -118,16 +167,4 @@
                 android:textSize="12sp"/>
         </LinearLayout>
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/loadingProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

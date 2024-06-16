@@ -24,10 +24,6 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("foods")
-    suspend fun getFood(): FoodResponse
-
-
-
-
+    @GET("stories")
+    suspend fun getFoods() : FoodResponse
 }

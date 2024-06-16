@@ -25,7 +25,7 @@ class DetailActivity : AppCompatActivity() {
         setupAction(detail)
 
         supportActionBar?.show()
-        supportActionBar?.title = "Detail Story"
+        supportActionBar?.title = "Detail Food"
     }
 
     private fun setupAction(detail: ListStoryItem){

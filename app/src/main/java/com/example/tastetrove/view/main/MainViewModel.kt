@@ -13,22 +13,22 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: UserRepository) : ViewModel() {
 
-    private val _stories = MutableLiveData<List<ListStoryItem>>()
-    val stories: LiveData<List<ListStoryItem>> = _stories
+    private val _foods = MutableLiveData<List<ListStoryItem>>()
+    val foods: LiveData<List<ListStoryItem>> = _foods
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
 
-    fun getFoods() {
+    fun getStories() {
         viewModelScope.launch {
             try {
-                val stories = repository.getFoods()
-                Log.d("MainViewModel", "Fetched stories: $stories")
-                _stories.value = stories ?: emptyList()
+                val foods = repository.getFoods()
+                Log.d("MainViewModel", "Fetched stories: $foods")
+                _foods.value = foods ?: emptyList()
             } catch (e: Exception) {
                 Log.e("MainViewModel", "Error fetching stories: ${e.message}", e)
-                _stories.value = emptyList()
+                _foods.value = emptyList()
             }
         }
     }

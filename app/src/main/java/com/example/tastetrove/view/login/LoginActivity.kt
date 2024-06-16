@@ -77,10 +77,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction(message: String, token: String) {
+
         val email = binding.emailEditText.text.toString()
         viewModel.saveSession(UserModel(email, token))
+
         AlertDialog.Builder(this).apply {
-            val intent = Intent(context, MainActivity()::class.java)
+            val intent = Intent(context, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()
@@ -102,7 +104,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.loadingProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }
