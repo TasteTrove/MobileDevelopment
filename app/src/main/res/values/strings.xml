@@ -28,4 +28,12 @@
     <string name="yesLogout">Yes</string>
     <string name="cancelLogout">Cancel</string>
     <string name="food_item">Food Item</string>
+    <string name="camera_x">CameraX</string>
+    <string name="gallery">Galeri</string>
+    <string name="analyze">Analyze</string>
+    <string name="result">Hasil Analisis</string>
+    <string name="classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="empty_image">Silakan masukkan berkas gambar terlebih dahulu.</string>
+    <string name="dialog_button_yes">YES</string>
+    <string name="dialog_button_no">NO</string>
 </resources>
