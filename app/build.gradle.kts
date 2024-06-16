@@ -14,7 +14,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "BASE_URL", "\"http://34.101.216.113:3000/auth/\"")
+        buildConfigField("String", "BASE_URL", "\"https://tastetrove-v1-5ufiritwza-et.a.run.app/auth/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
