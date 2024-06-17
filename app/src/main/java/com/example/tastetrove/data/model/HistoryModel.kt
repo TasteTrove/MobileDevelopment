@@ -7,7 +7,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "user_data")
+@Entity(tableName = "history_scan")
 @Parcelize
 @Keep
 data class HistoryModel(
@@ -22,6 +22,14 @@ data class HistoryModel(
     var label: String? = "",
 
     @ColumnInfo("score")
-    var score: String? = ""
+    var score: String? = "",
 
- ) : Parcelable
+    ) : Parcelable {
+
+    fun toFavoriteModel(): FavoriteFoodModel {
+        return FavoriteFoodModel(
+            table_id, image, label, score
+        )
+    }
+
+}

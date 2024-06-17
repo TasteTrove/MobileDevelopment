@@ -1,8 +1,9 @@
 package com.example.tastetrove.di
 
 import android.content.Context
+import com.example.tastetrove.data.dao.FavoriteFoodDao
 import com.example.tastetrove.data.dao.HistoryDao
-import com.example.tastetrove.data.local.HistoryDatabase
+import com.example.tastetrove.data.local.FoodDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,9 +17,12 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): HistoryDatabase = HistoryDatabase.getInstance(context)
+    fun provideDatabase(@ApplicationContext context: Context): FoodDatabase = FoodDatabase.getInstance(context)
 
     @Provides
-    fun provideHistoryDao(database: HistoryDatabase): HistoryDao = database.historyDao()
+    fun provideHistoryDao(database: FoodDatabase): HistoryDao = database.historyDao()
+
+    @Provides
+    fun provideFavoriteFoodDao(database: FoodDatabase): FavoriteFoodDao = database.favoritesFoodDao()
 
 }

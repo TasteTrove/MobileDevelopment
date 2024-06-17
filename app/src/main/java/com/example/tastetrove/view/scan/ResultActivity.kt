@@ -32,6 +32,8 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
     private var label = ""
     private var score = ""
 
+    private var dataScan = HistoryModel()
+
     override fun setupViewBinding(): ActivityScanResultBinding {
         return ActivityScanResultBinding.inflate(layoutInflater)
     }
@@ -41,6 +43,12 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
 
         // TODO: Menampilkan hasil gambar, prediksi, dan confidence score.
         classify()
+
+        binding.apply {
+            favoriteIcon.setOnClickListener {
+                viewModel.insertFav(dataScan.toFavoriteModel())
+            }
+        }
     }
 
     override fun setupViewModel() {
@@ -48,11 +56,24 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
         viewModel.dbState.observe(this) {
             when (it) {
                 is Resource.Error -> {
-                    showToast("Error Menyimpan History")
+                    // showToast("Error Menyimpan History")
                 }
                 is Resource.Loading -> {}
                 is Resource.Success -> {
-                    showToast("Success Menyimpan History")
+                    // showToast("Success Menyimpan History")
+                }
+            }
+        }
+
+        viewModel.dbFavState.observe(this) {
+            when (it) {
+                is Resource.Error -> {
+                    showToast("Error Menyimpan Favorite")
+                }
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    showToast("Success Menyimpan Favorite")
+                    binding.favoriteIcon.hide()
                 }
             }
         }
@@ -85,12 +106,12 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
                 }
             }
             binding.titleFood.text = resultText
-            val data = HistoryModel(
+            dataScan = HistoryModel(
                 image = imageUri.toString(),
                 label = label,
                 score = score
             )
-            viewModel.insertData(data)
+            viewModel.insertData(dataScan)
         }
     }
 

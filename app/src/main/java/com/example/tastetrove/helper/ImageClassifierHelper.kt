@@ -24,7 +24,7 @@ class ImageClassifierHelper(private val listener: ImageClassifierListener?) {
         private const val TAG = "ImageClassifierHelper"
         const val THRESHOLD = 0.1f
         const val MAX_RESULTS = 3
-        const val MODEL_NAME = "model.tflite"
+        const val MODEL_NAME = "cancer_classification.tflite"
     }
 
     private var imageClassifier: ImageClassifier? = null

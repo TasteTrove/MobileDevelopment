@@ -15,9 +15,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tastetrove.R
 import com.example.tastetrove.ViewModelFactory
+import com.example.tastetrove.common.ext.startActivityExt
 import com.example.tastetrove.data.adapter.FoodAdapter
 import com.example.tastetrove.databinding.ActivityMainBinding
+import com.example.tastetrove.view.favorite.FavoriteActivity
 import com.example.tastetrove.view.login.LoginActivity
+import com.example.tastetrove.view.scan.ScanActivity
 import com.example.tastetrove.view.welcome.WelcomeActivity
 import kotlinx.coroutines.launch
 
@@ -85,6 +88,18 @@ class MainActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.actionLogout.setOnClickListener {
             viewModel.logout()
+        }
+
+        binding.actionFav.setOnClickListener {
+            startActivityExt<FavoriteActivity> {
+
+            }
+        }
+
+        binding.btnCamera.setOnClickListener {
+            startActivityExt<ScanActivity> {
+
+            }
         }
     }
 
