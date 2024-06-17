@@ -25,13 +25,13 @@ interface HistoryDao {
     @Delete
     fun delete(data: HistoryModel)
 
-    @Query("SELECT * FROM user_data ORDER BY table_id ASC")
+    @Query("SELECT * FROM history_scan ORDER BY table_id ASC")
     fun getAll(): List<HistoryModel>
 
-    @Query("DELETE FROM user_data")
+    @Query("DELETE FROM history_scan")
     fun nuke()
 
-    @Query("SELECT * FROM user_data WHERE login LIKE '%' || :search || '%' ORDER BY table_id DESC")
+    @Query("SELECT * FROM history_scan WHERE login LIKE '%' || :search || '%' ORDER BY table_id DESC")
     fun getByUserName(search: String): LiveData<HistoryModel>
 
 }
