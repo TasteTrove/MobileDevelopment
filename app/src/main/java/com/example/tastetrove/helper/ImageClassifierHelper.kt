@@ -24,7 +24,7 @@ class ImageClassifierHelper(private val listener: ImageClassifierListener?) {
         private const val TAG = "ImageClassifierHelper"
         const val THRESHOLD = 0.1f
         const val MAX_RESULTS = 3
-        const val MODEL_NAME = "cancer_classification.tflite"
+        const val MODEL_NAME = "model.tflite"
     }
 
     private var imageClassifier: ImageClassifier? = null
@@ -61,7 +61,7 @@ class ImageClassifierHelper(private val listener: ImageClassifierListener?) {
 
         val imageProcessor = ImageProcessor.Builder()
             .add(ResizeOp(224, 224, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
-            .add(CastOp(DataType.UINT8))
+            .add(CastOp(DataType.FLOAT32))
             .build()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
