@@ -1,21 +1,48 @@
 package com.example.tastetrove.view.search
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.tastetrove.R
+import androidx.lifecycle.ViewModelProvider
+import com.example.tastetrove.data.adapter.FoodAdapter
+import com.example.tastetrove.data.response.ListStoryItem
+import com.example.tastetrove.databinding.ActivitySearchBinding
+import com.example.tastetrove.view.detail.DetailActivity
 
 class SearchActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivitySearchBinding
+    private lateinit var foodAdapter: FoodAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_search)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivitySearchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        foodAdapter = FoodAdapter()
+        onItemClick()
+        val mainViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+
+
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.setText(searchView.text)
+                    mainViewModel.getStories(searchView.text.toString())
+                    searchView.hide()
+                    false
+
+                }
         }
     }
+
+        private fun onItemClick() {
+            foodAdapter.setOnItemClickCallback(object : FoodAdapter.OnItemClickCallback {
+                override fun onItemClicked(item: ListStoryItem) {
+                    startActivity(
+                        Intent(this@SearchActivity, DetailActivity::class.java)
+                    )
+                }
+            })
+        }
 }

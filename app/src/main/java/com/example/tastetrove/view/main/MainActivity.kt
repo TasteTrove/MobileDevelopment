@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.SearchEvent
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -20,7 +21,9 @@ import com.example.tastetrove.data.adapter.FoodAdapter
 import com.example.tastetrove.databinding.ActivityMainBinding
 import com.example.tastetrove.view.favorite.FavoriteActivity
 import com.example.tastetrove.view.login.LoginActivity
+import com.example.tastetrove.view.profile.ProfileActivity
 import com.example.tastetrove.view.scan.ScanActivity
+import com.example.tastetrove.view.search.SearchActivity
 import com.example.tastetrove.view.welcome.WelcomeActivity
 import kotlinx.coroutines.launch
 
@@ -98,6 +101,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnCamera.setOnClickListener {
             startActivityExt<ScanActivity> {
+
+            }
+        }
+
+        binding.btnProfile.setOnClickListener{
+            startActivityExt<ProfileActivity> {
+
+            }
+        }
+
+        binding.btnSearch.setOnClickListener{
+            startActivityExt<SearchActivity> {
 
             }
         }

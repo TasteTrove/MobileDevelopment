@@ -53,6 +53,14 @@ class FoodAdapter : ListAdapter<ListStoryItem, FoodAdapter.ItemViewHolder>(DIFF_
             }
         }
     }
+    interface OnItemClickCallback{
+        fun onItemClicked(item: ListStoryItem)
+    }
+
+    private var onItemClickCallback: OnItemClickCallback? = null
+    fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {

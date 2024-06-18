@@ -16,7 +16,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "BASE_URL", "\"https://tastetrove-v1-5ufiritwza-et.a.run.app/auth/\"")
+        buildConfigField("String", "BASE_URL", "\"https://tastetrove-v1-5ufiritwza-et.a.run.app/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -60,6 +60,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Glide
     implementation(libs.glide)
@@ -108,6 +109,8 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.51.1")
     ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+
+
 
     implementation("com.github.yalantis:ucrop:2.2.8")
 
