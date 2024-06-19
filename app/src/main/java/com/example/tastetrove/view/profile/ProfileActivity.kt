@@ -31,11 +31,11 @@ class ProfileActivity : AppCompatActivity() {
             profileViewModel.isLoading.observe(this) {
                 showLoading(it)
             }
-            profileViewModel.getUser(user)
+            profileViewModel.getUser(this, user)
             profileViewModel.user.observe(this) { user ->
                 user?.let {
-                    binding.tvUser.text = user.nama ?: ""
-                    binding.tvEmail.text = user.email ?: ""
+                    binding.tvUser.text = it.userResponse.nama ?: ""
+                    binding.tvEmail.text = it.userResponse.nama ?: ""
 
                 }
             }

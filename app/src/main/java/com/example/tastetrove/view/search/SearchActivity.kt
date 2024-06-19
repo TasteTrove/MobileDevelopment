@@ -2,14 +2,21 @@ package com.example.tastetrove.view.search
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.tastetrove.ViewModelFactory
 import com.example.tastetrove.data.adapter.FoodAdapter
 import com.example.tastetrove.data.response.ListStoryItem
 import com.example.tastetrove.databinding.ActivitySearchBinding
 import com.example.tastetrove.view.detail.DetailActivity
+import com.example.tastetrove.view.login.LoginViewModel
 
 class SearchActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<SearchViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     private lateinit var binding : ActivitySearchBinding
     private lateinit var foodAdapter: FoodAdapter
@@ -19,8 +26,6 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
         foodAdapter = FoodAdapter()
         onItemClick()
-        val mainViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
-
 
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
@@ -28,7 +33,8 @@ class SearchActivity : AppCompatActivity() {
                 .editText
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
-                    mainViewModel.findFood(searchView.text.toString())
+                    // TODO :: Benerin Ini
+                    // viewModel.getStories(searchView.text.toString())
                     searchView.hide()
                     false
 

@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
 
-    fun apiService(context: Context, token: String): ApiService {
+    fun apiService(context: Context, token: String = ""): ApiService {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(
                 if (BuildConfig.DEBUG)
@@ -19,19 +19,28 @@ object ApiConfig {
                 else
                     HttpLoggingInterceptor.Level.NONE
             )
-        val authInterceptor = Interceptor { chain ->
-            val req = chain.request()
-            val requestHeaders = req.newBuilder()
-                .addHeader("Authorization", "Bearer $token")
+
+        val client = if (token != "") {
+            val authInterceptor = Interceptor { chain ->
+                val req = chain.request()
+                val requestHeaders = req.newBuilder()
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+                chain.proceed(requestHeaders)
+            }
+
+            OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)
+                .addInterceptor(ChuckerInterceptor(context))
                 .build()
-            chain.proceed(requestHeaders)
+        } else {
+            OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(ChuckerInterceptor(context))
+                .build()
         }
 
-        val client = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .addInterceptor(authInterceptor)
-            .addInterceptor(ChuckerInterceptor(context))
-            .build()
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

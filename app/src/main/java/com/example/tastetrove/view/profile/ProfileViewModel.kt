@@ -21,9 +21,9 @@ class ProfileViewModel : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
 
-    fun getUser(user : String){
+    fun getUser(context: Context, user : String){
         _isLoading.value = true
-        val client = ApiConfig.apiService().getUser(user)
+        val client = ApiConfig.apiService(context).getUser(user)
         client.enqueue(object : Callback<UserResponse> {
             override fun onResponse(
                 call: Call<UserResponse>,
