@@ -20,8 +20,12 @@ import com.example.tastetrove.common.ext.startActivityExt
 import com.example.tastetrove.databinding.ActivityScanBinding
 import com.example.tastetrove.util.getFileNameFromUri
 import com.example.tastetrove.util.getImageUri
+import com.example.tastetrove.view.favorite.FavoriteActivity
+import com.example.tastetrove.view.main.MainActivity
 import com.example.tastetrove.view.picker.CameraActivity
 import com.example.tastetrove.view.picker.CameraActivity.Companion.CAMERAX_RESULT
+import com.example.tastetrove.view.profile.ProfileActivity
+import com.example.tastetrove.view.search.SearchActivity
 import com.yalantis.ucrop.UCrop
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -105,7 +109,7 @@ class ScanActivity : BaseActivity<ActivityScanBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setupAction()
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
@@ -158,6 +162,32 @@ class ScanActivity : BaseActivity<ActivityScanBinding>() {
             }
         } ?: run {
             showToast(getString(R.string.empty_image))
+        }
+    }
+
+    private fun setupAction() {
+        binding.btnCamera.setOnClickListener {
+            startActivityExt<ScanActivity> {
+
+            }
+        }
+
+        binding.btnProfile.setOnClickListener{
+            startActivityExt<ProfileActivity> {
+
+            }
+        }
+
+        binding.btnSearch.setOnClickListener{
+            startActivityExt<SearchActivity> {
+
+            }
+        }
+
+        binding.btnHome.setOnClickListener{
+            startActivityExt<MainActivity> {
+
+            }
         }
     }
 }

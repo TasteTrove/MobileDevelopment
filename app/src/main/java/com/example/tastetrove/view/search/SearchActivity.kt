@@ -6,11 +6,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tastetrove.ViewModelFactory
+import com.example.tastetrove.common.ext.startActivityExt
 import com.example.tastetrove.data.adapter.FoodAdapter
 import com.example.tastetrove.data.response.ListStoryItem
 import com.example.tastetrove.databinding.ActivitySearchBinding
 import com.example.tastetrove.view.detail.DetailActivity
+import com.example.tastetrove.view.favorite.FavoriteActivity
 import com.example.tastetrove.view.login.LoginViewModel
+import com.example.tastetrove.view.main.MainActivity
+import com.example.tastetrove.view.profile.ProfileActivity
+import com.example.tastetrove.view.scan.ScanActivity
 
 class SearchActivity : AppCompatActivity() {
 
@@ -26,7 +31,7 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
         foodAdapter = FoodAdapter()
         onItemClick()
-
+        setupAction()
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
             searchView
@@ -51,4 +56,31 @@ class SearchActivity : AppCompatActivity() {
                 }
             })
         }
+
+    private fun setupAction() {
+
+        binding.btnCamera.setOnClickListener {
+            startActivityExt<ScanActivity> {
+
+            }
+        }
+
+        binding.btnProfile.setOnClickListener{
+            startActivityExt<ProfileActivity> {
+
+            }
+        }
+
+        binding.btnSearch.setOnClickListener{
+            startActivityExt<SearchActivity> {
+
+            }
+        }
+
+        binding.btnHome.setOnClickListener{
+            startActivityExt<MainActivity> {
+
+            }
+        }
+    }
 }
