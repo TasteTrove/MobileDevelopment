@@ -28,7 +28,7 @@ class SearchActivity : AppCompatActivity() {
                 .editText
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
-                    mainViewModel.getStories(searchView.text.toString())
+                    mainViewModel.findFood(searchView.text.toString())
                     searchView.hide()
                     false
 

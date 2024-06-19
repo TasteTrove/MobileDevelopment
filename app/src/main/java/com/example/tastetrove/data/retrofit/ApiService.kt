@@ -12,6 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @FormUrlEncoded
@@ -29,12 +30,19 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("stories")
+    @GET("food")
     suspend fun getFoods() : FoodResponse
 
     @Headers("Authorization: Bearer ${BuildConfig.BASE_URL}")
-    @GET("user")
+    @GET("user/{nama}")
     fun getUser(
         @Path("nama") username: String
     ) : Call<UserResponse>
+
+
+    @Headers("Authorization: token ${BuildConfig.BASE_URL}")
+    @GET("search/users")
+    fun getSearch(
+        @Query("q") q: String
+    ) : Call <FoodResponse>
 }
