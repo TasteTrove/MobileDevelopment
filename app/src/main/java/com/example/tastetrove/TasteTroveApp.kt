@@ -1,6 +1,9 @@
-package com.example.tastetrove;
+package com.example.tastetrove
 
-import android.app.Application;
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-public class TasteTroveApp extends Application {
+@HiltAndroidApp
+class TasteTroveApp : Application() {
+
 }
