@@ -36,4 +36,63 @@
     <string name="empty_image">Silakan masukkan berkas gambar terlebih dahulu.</string>
     <string name="dialog_button_yes">YES</string>
     <string name="dialog_button_no">NO</string>
+
+
+
+
+
+    <string-array name="data_food">
+        <item>Mie Aceh</item>
+        <item>Seruit</item>
+        <item>Pelecing Kangkung</item>
+        <item>Sate Klathak</item>
+        <item>Tumis Bunga Pepaya</item>
+        <item>Rendang</item>
+        <item>Kepiting Soka</item>
+        <item>Soto Kudus</item>
+        <item>Soto Banjar</item>
+        <item>Sate Ulat Sagu</item>
+        <item>Kerak Telor</item>
+        <item>Es Pisang Ijo</item>
+        <item>Babi Guling</item>
+    </string-array>
+
+
+    <string-array name="data_description">
+        <item>Mie Aceh adalah hidangan mi pedas yang berasal dari Aceh, Sumatra. Mi ini biasanya disajikan dengan kuah kari yang kental dan kaya rempah, serta tambahan bahan-bahan seperti daging sapi, kambing, atau seafood. Mie Aceh dikenal dengan rasa pedasnya yang khas dan aroma rempah yang kuat, membuatnya menjadi salah satu makanan favorit di Aceh. Hidangan ini sering disajikan dengan taburan bawang goreng, emping, dan acar mentimun untuk menambah cita rasa. Secara tradisional, Mie Aceh terdiri dari mi kuning tebal yang dimasak bersama bumbu-bumbu seperti kunyit, jintan, ketumbar, dan cabai. Kuahnya yang kental dibuat dari campuran santan dan kaldu, memberikan tekstur yang kaya dan lezat. Beberapa variasi Mie Aceh termasuk Mie Aceh Goreng (tanpa kuah) dan Mie Aceh Kuah (dengan kuah), keduanya sama-sama populer di kalangan penikmat kuliner lokal maupun wisatawan.</item>
+        <item>Seruit adalah hidangan tradisional dari Lampung yang terdiri dari ikan yang digoreng atau dibakar, kemudian dicampur dengan sambal terasi yang pedas dan segar. Hidangan ini biasanya disajikan dengan tambahan lalapan seperti daun kemangi, timun, dan terong. Rasanya yang gurih dan pedas membuat Seruit menjadi favorit di kalangan masyarakat Lampung, terutama saat acara keluarga atau perayaan adat. Ikan yang digunakan untuk Seruit biasanya adalah ikan air tawar seperti ikan baung, ikan belida, atau ikan gabus. Sambal terasinya dibuat dari campuran cabai, tomat, terasi, dan jeruk nipis, memberikan rasa yang kompleks dan menyegarkan. Selain itu, Seruit juga sering dinikmati dengan tambahan tempoyak, yaitu durian yang difermentasi, yang menambah keunikan rasa dari hidangan ini.</item>
+        <item>Pelecing Kangkung adalah hidangan khas dari Lombok yang terdiri dari kangkung yang direbus dan disajikan dengan sambal tomat yang pedas. Sambalnya terbuat dari campuran cabai, tomat, terasi, dan jeruk limau, memberikan rasa pedas yang menyegarkan dan aroma yang khas. Pelecing Kangkung sering disajikan sebagai lauk pendamping untuk hidangan utama seperti ayam taliwang atau ikan bakar. Hidangan ini tidak hanya lezat, tetapi juga kaya akan nutrisi. Kangkung merupakan sumber vitamin dan mineral yang baik, sedangkan sambalnya menambahkan antioksidan dari tomat dan cabai. Pelecing Kangkung adalah contoh sempurna dari hidangan yang sederhana namun penuh rasa dan manfaat kesehatan, menjadikannya favorit di meja makan masyarakat Lombok.</item>
+        <item>Sate Klathak adalah variasi unik dari sate yang berasal dari daerah Bantul, Yogyakarta. Sate ini menggunakan daging kambing yang ditusuk dengan jeruji besi, bukan bambu seperti sate pada umumnya. Proses pemanggangan dengan jeruji besi ini memberikan panas yang merata dan memastikan daging matang sempurna. Sate Klathak biasanya dibumbui dengan garam dan merica saja, sehingga rasa asli daging kambing lebih menonjol. Disajikan dengan kuah gulai yang ringan dan nasi, Sate Klathak menawarkan pengalaman kuliner yang berbeda dibandingkan sate lainnya. Keunikan penggunaan jeruji besi sebagai tusuk sate serta bumbu yang minimalis membuatnya sangat populer, terutama di kalangan pecinta kuliner yang ingin merasakan keaslian rasa daging kambing.</item>
+        <item>Tumis Bunga Pepaya adalah hidangan khas Indonesia yang dibuat dari bunga pepaya yang ditumis dengan bumbu-bumbu seperti bawang merah, bawang putih, cabai, dan terasi. Meskipun bunga pepaya memiliki rasa yang agak pahit, proses memasaknya dengan bumbu yang kaya dapat mengurangi kepahitan tersebut dan menghasilkan hidangan yang lezat dan unik. Hidangan ini sering disajikan sebagai lauk pendamping untuk nasi putih dan protein seperti ikan atau ayam. Selain rasanya yang khas, Tumis Bunga Pepaya juga kaya akan nutrisi, termasuk serat dan vitamin. Hidangan ini menunjukkan kreativitas kuliner Indonesia dalam mengolah bahan-bahan alami menjadi makanan yang lezat dan bergizi.</item>
+        <item>Rendang adalah salah satu hidangan paling terkenal dari Indonesia, khususnya berasal dari Minangkabau, Sumatra Barat. Hidangan ini terbuat dari daging sapi yang dimasak perlahan dalam campuran santan dan bumbu rempah-rempah hingga kuahnya mengering dan bumbunya meresap sempurna ke dalam daging. Proses memasak yang memakan waktu berjam-jam ini menghasilkan daging yang empuk dengan rasa yang sangat kaya dan kompleks. Rendang sering disajikan pada acara-acara istimewa seperti perayaan adat dan hari raya. Bumbu-bumbu yang digunakan termasuk serai, lengkuas, bawang putih, bawang merah, kunyit, jahe, dan cabai, menciptakan kombinasi rasa yang unik dan tidak tertandingi. Hidangan ini tidak hanya populer di Indonesia, tetapi juga diakui secara internasional sebagai salah satu makanan terenak di dunia.</item>
+        <item>Kepiting Soka adalah hidangan yang menggunakan kepiting soka atau soft-shell crab, yang dapat dimakan seluruhnya tanpa perlu mengupas cangkangnya. Hidangan ini populer di berbagai daerah di Indonesia, terutama di wilayah pesisir. Kepiting soka biasanya digoreng renyah atau dimasak dengan berbagai saus seperti saus padang, saus tiram, atau saus mentega. Rasa daging kepiting yang manis dan tekstur cangkang yang renyah membuat hidangan ini sangat digemari. Selain rasanya yang lezat, Kepiting Soka juga mengandung banyak nutrisi seperti protein dan mineral. Hidangan ini sering disajikan dalam porsi besar dan menjadi favorit dalam pesta atau jamuan makan bersama keluarga dan teman.</item>
+        <item>Soto Kudus adalah variasi soto yang berasal dari Kudus, Jawa Tengah. Hidangan ini terbuat dari kaldu ayam atau daging sapi yang disajikan dengan irisan daging, tauge, dan nasi atau lontong. Soto Kudus memiliki kuah bening yang ringan namun kaya akan rasa karena bumbu-bumbunya seperti bawang putih, kemiri, ketumbar, dan jintan. Tradisi menyantap Soto Kudus seringkali melibatkan penyajian dalam mangkuk kecil dan dinikmati bersama dengan pelengkap seperti telur pindang, perkedel, dan sambal. Soto Kudus tidak hanya populer di Kudus tetapi juga di berbagai daerah di Indonesia, dikenal sebagai salah satu soto dengan cita rasa yang lezat dan khas.</item>
+        <item>Soto Banjar adalah hidangan khas dari Banjarmasin, Kalimantan Selatan. Soto ini menggunakan ayam sebagai bahan utama, disajikan dengan kuah bening yang kaya akan rempah seperti kayu manis, biji pala, dan cengkeh. Ciri khas lain dari Soto Banjar adalah penggunaan susu atau santan yang memberikan kekayaan rasa pada kuahnya. Hidangan ini biasanya disajikan dengan ketupat, perkedel, dan telur rebus, serta taburan bawang goreng dan daun bawang. Rasanya yang gurih dan hangat menjadikan Soto Banjar pilihan yang tepat untuk dinikmati pada berbagai kesempatan, dari sarapan hingga makan malam. Soto Banjar adalah contoh sempurna dari kelezatan kuliner Kalimantan Selatan yang kaya rempah dan sejarah.</item>
+        <item>Sate Ulat Sagu adalah hidangan eksotis dari Papua dan Maluku yang terbuat dari ulat sagu, larva yang ditemukan di batang pohon sagu. Ulat ini ditusuk dan dipanggang seperti sate pada umumnya. Meskipun mungkin terdengar ekstrem, Sate Ulat Sagu memiliki rasa yang gurih dan tekstur yang lembut, mirip dengan daging yang sangat empuk. Hidangan ini sering disajikan pada acara adat dan sebagai bagian dari tradisi kuliner lokal. Selain menjadi sumber protein yang tinggi, ulat sagu juga kaya akan lemak sehat. Sate Ulat Sagu menunjukkan keragaman kuliner Indonesia yang mencakup bahan-bahan alami dari berbagai wilayah dan budaya. Rasanya yang gurih dengan tekstur yang unik membuat Kerak Telor menjadi favorit di kalangan masyarakat Jakarta. Hidangan ini juga merupakan simbol kebanggaan budaya Betawi yang kaya akan tradisi kuliner. Kerak Telor sering disajikan pada berbagai festival dan perayaan, menggambarkan warisan budaya yang terus dilestarikan.</item>
+        <item>Kerak Telor adalah makanan khas Betawi yang sering dijumpai pada acara-acara budaya seperti Pekan Raya Jakarta. Hidangan ini terbuat dari telur ayam atau bebek yang dicampur dengan ketan putih, ebi (udang kering), bawang goreng, dan bumbu-bumbu seperti kelapa parut sangrai dan serundeng. Kerak Telor dimasak di atas tungku arang hingga matang dan berkulit renyah di bagian bawahnya. </item>
+        <item>Es Pisang Ijo adalah hidangan penutup khas dari Makassar, Sulawesi Selatan, yang terkenal dengan cita rasa manis dan segar. Hidangan ini terdiri dari pisang yang dibalut dengan adonan tepung berwarna hijau, yang dibuat dari campuran tepung beras, santan, dan daun pandan, memberikan warna dan aroma yang khas. Pisang yang telah dibalut kemudian dikukus hingga matang dan dipotong-potong sebelum disajikan. Es Pisang Ijo biasanya disajikan dengan sirup manis berwarna merah, bubur sumsum yang lembut, dan es serut, menciptakan perpaduan rasa manis, lembut, dan dingin yang menyegarkan. Hidangan ini sangat populer di berbagai daerah di Indonesia, terutama selama bulan Ramadan sebagai menu berbuka puasa. Es Pisang Ijo tidak hanya disukai karena rasanya yang lezat, tetapi juga karena tampilannya yang menarik dan menggugah selera.</item>
+        <item>Babi Guling adalah salah satu hidangan tradisional Bali yang sangat terkenal dan menjadi favorit baik bagi wisatawan lokal maupun mancanegara. Hidangan ini terbuat dari seekor babi utuh yang diisi dengan campuran bumbu khas Bali seperti kunyit, bawang putih, bawang merah, jahe, lengkuas, dan rempah-rempah lainnya. Setelah diisi bumbu, babi kemudian dipanggang secara perlahan di atas api terbuka hingga kulitnya menjadi sangat renyah dan dagingnya empuk serta beraroma harum. Babi Guling biasanya disajikan dengan nasi putih, lawar (campuran sayur dan daging cincang), sambal matah, dan kerupuk kulit. Hidangan ini sering kali ditemukan dalam upacara adat dan perayaan di Bali, serta di berbagai rumah makan yang menyajikan masakan Bali. Kelezatan dan kekayaan rasa dari Babi Guling menjadikannya salah satu ikon kuliner Bali yang wajib dicoba oleh setiap pengunjung pulau ini.</item>
+    </string-array>
+
+
+
+    <integer-array name="data_photo">
+        <item>@drawable/mie_aceh</item>
+        <item>@drawable/seruit</item>
+        <item>@drawable/plecing_kangkung</item>
+        <item>@drawable/sate_klathak</item>
+        <item>@drawable/tumis_bunga_pepaya</item>
+        <item>@drawable/rendang</item>
+        <item>@drawable/kepiting_soka</item>
+        <item>@drawable/soto_kudus</item>
+        <item>@drawable/soto_banjar</item>
+        <item>@drawable/sate_ulat_sagu</item>
+        <item>@drawable/kerak_telor</item>
+        <item>@drawable/es_pisang_ijo</item>
+        <item>@drawable/babi_guling</item>
+    </integer-array>
+
+
+
+
 </resources>

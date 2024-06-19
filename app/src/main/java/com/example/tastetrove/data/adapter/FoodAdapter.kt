@@ -3,6 +3,7 @@ package com.example.tastetrove.data.adapter
 import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,66 +13,108 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tastetrove.R
+import com.example.tastetrove.data.pref.Food
 import com.example.tastetrove.data.response.ListStoryItem
 import com.example.tastetrove.databinding.ItemFoodBinding
 import com.example.tastetrove.view.detail.DetailActivity
 
-class FoodAdapter : ListAdapter<ListStoryItem, FoodAdapter.ItemViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val binding = ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemViewHolder(binding)
+
+
+
+class FoodAdapter(private val listFood: ArrayList<Food>) : RecyclerView.Adapter<FoodAdapter.ListViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
+        return ListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val review = getItem(position)
-        if (review != null) {
-            holder.bind(review)
+    override fun getItemCount(): Int = listFood.size
+
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        val (food, description, photo) = listFood[position]
+        holder.imgPhoto.setImageResource(photo)
+        holder.tvText.text = food
+
+        holder.itemView.setOnClickListener {
+            val intentDetail = Intent(holder.itemView.context, DetailActivity::class.java).apply {
+                putExtra("key_food", listFood[holder.adapterPosition])
+            }
+            holder.itemView.context.startActivity(intentDetail)
         }
     }
 
-    inner class ItemViewHolder(private val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        private var imgStory: ImageView = binding.imgFood
-        private var tvName: TextView = binding.tvFoodName
-
-        fun bind(story: ListStoryItem) {
-            Glide.with(binding.imgFood.context)
-                .load(story.photoUrl)
-                .into(binding.imgFood)
-            binding.tvFoodName.text = story.name
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.DETAIL_STORY, story)
-                val optionsCompat: ActivityOptionsCompat =
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        itemView.context as Activity,
-                        Pair(imgStory, "image"),
-                        Pair(tvName, "name"),
-                    )
-                itemView.context.startActivity(intent, optionsCompat.toBundle())
-            }
-        }
+    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imgPhoto: ImageView = itemView.findViewById(R.id.imgFood)
+        val tvText: TextView = itemView.findViewById(R.id.tvFoodName)
     }
-    interface OnItemClickCallback{
-        fun onItemClicked(item: ListStoryItem)
-    }
-
-    private var onItemClickCallback: OnItemClickCallback? = null
-    fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback){
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
-            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
-
 }
+
+
+
+
+
+
+
+
+// TODO CLASS FOOD ADAPTER YANG BENER
+//class FoodAdapter : ListAdapter<ListStoryItem, FoodAdapter.ItemViewHolder>(DIFF_CALLBACK) {
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+//        val binding = ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+//        return ItemViewHolder(binding)
+//    }
+//
+//    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+//        val review = getItem(position)
+//        if (review != null) {
+//            holder.bind(review)
+//        }
+//    }
+//
+//    inner class ItemViewHolder(private val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
+//
+//        private var imgStory: ImageView = binding.imgFood
+//        private var tvName: TextView = binding.tvFoodName
+//
+//        fun bind(story: ListStoryItem) {
+//            Glide.with(binding.imgFood.context)
+//                .load(story.photoUrl)
+//                .into(binding.imgFood)
+//            binding.tvFoodName.text = story.name
+//            itemView.setOnClickListener {
+//                val intent = Intent(itemView.context, DetailActivity::class.java)
+//                intent.putExtra(DetailActivity.DETAIL_STORY, story)
+//                val optionsCompat: ActivityOptionsCompat =
+//                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                        itemView.context as Activity,
+//                        Pair(imgStory, "image"),
+//                        Pair(tvName, "name"),
+//                    )
+//                itemView.context.startActivity(intent, optionsCompat.toBundle())
+//            }
+//        }
+//    }
+//    interface OnItemClickCallback{
+//        fun onItemClicked(item: ListStoryItem)
+//    }
+//
+//    private var onItemClickCallback: OnItemClickCallback? = null
+//    fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback){
+//        this.onItemClickCallback = onItemClickCallback
+//    }
+//
+//    companion object {
+//        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
+//            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+//                return oldItem.id == newItem.id
+//            }
+//
+//            override fun areContentsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+//                return oldItem == newItem
+//            }
+//        }
+//    }
+//
+//}
