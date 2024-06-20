@@ -8,19 +8,20 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.tastetrove.data.pref.UserModel
 import com.example.tastetrove.data.repo.UserRepository
-import com.example.tastetrove.data.response.ListStoryItem
+import com.example.tastetrove.data.response.FoodGambarsItem
+import com.example.tastetrove.data.response.FoodsResponseItem
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: UserRepository) : ViewModel() {
 
-    private val _foods = MutableLiveData<List<ListStoryItem>>()
-    val foods: LiveData<List<ListStoryItem>> = _foods
+    private val _foods = MutableLiveData<List<FoodsResponseItem>>()
+    val foods: LiveData<List<FoodsResponseItem>> = _foods
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
 
-    fun getStories() {
+    fun getFoods() {
         viewModelScope.launch {
             try {
                 val foods = repository.getFoods()
@@ -33,9 +34,5 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
-    fun logout() {
-        viewModelScope.launch {
-            repository.logout()
-        }
-    }
+
 }

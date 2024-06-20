@@ -57,6 +57,22 @@
         <item>Babi Guling</item>
     </string-array>
 
+    <string-array name="data_location">
+        <item>Aceh</item>
+        <item>Lampung</item>
+        <item>Lombok</item>
+        <item>Yogyakarta</item>
+        <item>Indonesia</item>
+        <item>Padang</item>
+        <item>Kepiting Soka</item>
+        <item>Soto Kudus</item>
+        <item>Soto Banjar</item>
+        <item>Sate Ulat Sagu</item>
+        <item>Kerak Telor</item>
+        <item>Es Pisang Ijo</item>
+        <item>Babi Guling</item>
+    </string-array>
+
 
     <string-array name="data_description">
         <item>Mie Aceh adalah hidangan mi pedas yang berasal dari Aceh, Sumatra. Mi ini biasanya disajikan dengan kuah kari yang kental dan kaya rempah, serta tambahan bahan-bahan seperti daging sapi, kambing, atau seafood. Mie Aceh dikenal dengan rasa pedasnya yang khas dan aroma rempah yang kuat, membuatnya menjadi salah satu makanan favorit di Aceh. Hidangan ini sering disajikan dengan taburan bawang goreng, emping, dan acar mentimun untuk menambah cita rasa. Secara tradisional, Mie Aceh terdiri dari mi kuning tebal yang dimasak bersama bumbu-bumbu seperti kunyit, jintan, ketumbar, dan cabai. Kuahnya yang kental dibuat dari campuran santan dan kaldu, memberikan tekstur yang kaya dan lezat. Beberapa variasi Mie Aceh termasuk Mie Aceh Goreng (tanpa kuah) dan Mie Aceh Kuah (dengan kuah), keduanya sama-sama populer di kalangan penikmat kuliner lokal maupun wisatawan.</item>

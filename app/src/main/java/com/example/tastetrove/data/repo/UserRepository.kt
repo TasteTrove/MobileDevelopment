@@ -6,16 +6,14 @@ import androidx.lifecycle.liveData
 import com.example.tastetrove.data.pref.UserModel
 import com.example.tastetrove.data.pref.UserPreference
 import com.example.tastetrove.data.response.ErrorResponse
-import com.example.tastetrove.data.response.ListStoryItem
+import com.example.tastetrove.data.response.FoodGambarsItem
+import com.example.tastetrove.data.response.FoodsResponseItem
 import com.example.tastetrove.data.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import com.example.tastetrove.data.response.Result
 import com.example.tastetrove.data.response.auth.LoginResponse
 import com.example.tastetrove.data.response.auth.RegisterResponse
-import com.example.tastetrove.data.retrofit.ApiConfig
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.HttpException
 
 class UserRepository private constructor(
@@ -32,9 +30,9 @@ class UserRepository private constructor(
         return userPreference.getSession()
     }
 
-    suspend fun getFoods(): List<ListStoryItem>? {
+    suspend fun getFoods(): List<FoodsResponseItem>? {
         val response = apiService.getFoods()
-        return if (!response.error!!) response.story else null
+        return if (!response.error!!) response.foodsResponse else null
     }
     fun signup(
         name: String, email: String, pass: String
