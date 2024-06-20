@@ -5,4 +5,5 @@
     <color name="orange">#FC4100</color>
     <color name="navy">#00215E</color>
     <color name="grey">#5D5D5D</color>
+    <color name="accent">#FF3D00</color>
 </resources>

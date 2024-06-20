@@ -58,6 +58,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
             binding.titleFood.text = mlFoodResponse.nama
             binding.detailFood.text = mlFoodResponse.deskripsi
             binding.imageFood.setImageExt(mlFoodResponse.image)
+            binding.lokasiFood.text = mlFoodResponse.lokasi
             hasilApi=mlFoodResponse
         } else {
             classify()

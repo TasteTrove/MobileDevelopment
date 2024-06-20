@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tastetrove.data.di.Injection
 import com.example.tastetrove.data.repo.UserRepository
+import com.example.tastetrove.splash.SplashViewModel
 import com.example.tastetrove.view.login.LoginViewModel
 import com.example.tastetrove.view.main.MainViewModel
 import com.example.tastetrove.view.profile.ProfileViewModel
@@ -30,6 +31,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SplashViewModel::class.java) -> {
+                SplashViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

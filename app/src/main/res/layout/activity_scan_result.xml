@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
-    app:cardCornerRadius="16dp">
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/imageFood"
@@ -18,40 +14,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
-        tools:src="@tools:sample/backgrounds/scenic"  />
+        android:contentDescription="@string/food_image"
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/titleFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="77dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_bold"
         android:textColor="@color/black"
-        android:textSize="21sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageFood"
         tools:text="Pempek Palembang" />
 
+    <TextView
+        android:id="@+id/lokasiFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="331dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/titleFood"
+        tools:layout_editor_absoluteX="16dp"
+        tools:text="Palembang" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="350dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/lokasiFood"
+        app:layout_constraintBottom_toTopOf="@id/favoriteIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp">
+
 
         <TextView
             android:id="@+id/detailFood"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="5dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            tools:text="Pempek Palembang adalah makanan khas daerah" />
+            android:textSize="16sp"
+            tools:text="Pempek Palembang adalah makanan khas daerah yang sangat terkenal di Indonesia. Pempek terbuat dari ikan dan tepung sagu, dengan cita rasa yang khas dan sangat digemari oleh banyak orang." />
 
     </ScrollView>
 
@@ -62,17 +70,19 @@
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/baseline_favorite_24" />
+        app:srcCompat="@drawable/baseline_favorite_24"
+        android:contentDescription="@string/favorite_icon"
+        android:tint="@android:color/white"
+        app:backgroundTint="@color/accent" />
 
     <ProgressBar
         android:id="@+id/loading"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

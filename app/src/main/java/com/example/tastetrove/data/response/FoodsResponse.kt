@@ -61,7 +61,8 @@ data class FoodsResponseItem(
 		return MLFoodResponse(
 			deskripsi = deskripsi,
 			image = foodGambars.first().gambar,
-			nama = nama
+			nama = nama,
+			lokasi = lokasi
 		)
 	}
 }

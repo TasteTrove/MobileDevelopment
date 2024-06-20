@@ -2,17 +2,22 @@ package com.example.tastetrove.view.search
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tastetrove.ViewModelFactory
 import com.example.tastetrove.common.ext.startActivityExt
 import com.example.tastetrove.data.adapter.FoodAdapter
 import com.example.tastetrove.data.response.FoodsResponseItem
+import com.example.tastetrove.data.response.Result
 import com.example.tastetrove.databinding.ActivitySearchBinding
 import com.example.tastetrove.view.main.MainActivity
 import com.example.tastetrove.view.profile.ProfileActivity
 import com.example.tastetrove.view.scan.ResultActivity
 import com.example.tastetrove.view.scan.ScanActivity
+import kotlinx.coroutines.launch
 
 class SearchActivity : AppCompatActivity() {
 
@@ -27,8 +32,20 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         foodAdapter = FoodAdapter()
+        setupRecyclerView()
         onItemClick()
         setupAction()
+        loadStories()
+
+        viewModel.getFoods().observe(this){
+            when(it){
+                is Result.Error -> {}
+                Result.Loading -> {}
+                is Result.Success -> {
+                    foodAdapter.submitList(it.data)
+                }
+            }
+        }
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
             searchView
@@ -37,7 +54,7 @@ class SearchActivity : AppCompatActivity() {
                     searchBar.setText(searchView.text)
                     // TODO :: Benerin Ini
                     // viewModel.getStories(searchView.text.toString())
-                    searchView.hide()
+                    searchView.show()
                     false
 
                 }
@@ -53,6 +70,12 @@ class SearchActivity : AppCompatActivity() {
                 }
             })
         }
+
+    private fun setupRecyclerView() {
+        foodAdapter = FoodAdapter()
+        binding.rvFood.layoutManager = LinearLayoutManager(this)
+        binding.rvFood.adapter = foodAdapter
+    }
 
     private fun setupAction() {
 
@@ -78,6 +101,13 @@ class SearchActivity : AppCompatActivity() {
             startActivityExt<MainActivity> {
 
             }
+        }
+    }
+
+    private fun loadStories() {
+        binding.progressBar.visibility = View.GONE
+        lifecycleScope.launch {
+            viewModel.getFoods()
         }
     }
 }

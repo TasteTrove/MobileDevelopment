@@ -12,6 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:layout_marginTop="77dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
         android:src="@drawable/ic_place_holder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,12 +21,13 @@
 
     <Button
         android:id="@+id/cameraButton"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/navy"
+        android:drawableLeft="@drawable/baseline_camera_24_white"
         android:text="Camera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,12 +35,13 @@
 
     <Button
         android:id="@+id/galeryButton"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/navy"
+        android:drawableLeft="@drawable/baseline_photo_library_24"
         android:text="Galery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,12 +49,13 @@
 
     <Button
         android:id="@+id/analyzeButton"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/navy"
+        android:drawableLeft="@drawable/baseline_analytics_24"
         android:text="Analyze"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
