@@ -83,10 +83,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.actionLogout.setOnClickListener {
-            viewModel.logout()
-        }
-
         binding.actionFav.setOnClickListener {
             startActivityExt<FavoriteActivity> {
 

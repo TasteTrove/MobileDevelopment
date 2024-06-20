@@ -7,6 +7,7 @@ import com.example.tastetrove.data.di.Injection
 import com.example.tastetrove.data.repo.UserRepository
 import com.example.tastetrove.view.login.LoginViewModel
 import com.example.tastetrove.view.main.MainViewModel
+import com.example.tastetrove.view.profile.ProfileViewModel
 import com.example.tastetrove.view.search.SearchViewModel
 import com.example.tastetrove.view.signup.SignupViewModel
 
@@ -26,6 +27,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
                 SearchViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

@@ -33,7 +33,7 @@ interface ApiService {
     suspend fun getFoods() : FoodResponse
 
     @Headers("Authorization: Bearer ${BuildConfig.BASE_URL}")
-    @GET("/user")
+    @GET("user")
     fun getUser(
         @Path("nama") nama: String
     ) : Call<UserResponse>
