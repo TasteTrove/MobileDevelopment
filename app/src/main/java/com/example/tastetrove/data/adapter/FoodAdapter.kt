@@ -12,12 +12,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tastetrove.common.ext.setImageExt
 import com.example.tastetrove.data.response.FoodsResponseItem
 import com.example.tastetrove.databinding.ItemFoodBinding
-import com.example.tastetrove.view.detail.DetailActivity
-
-
-
+import com.example.tastetrove.view.scan.ResultActivity
 
 
 //class FoodAdapter(private val listFood: ArrayList<Food>) : RecyclerView.Adapter<FoodAdapter.ListViewHolder>() {
@@ -83,13 +81,11 @@ class FoodAdapter : ListAdapter<FoodsResponseItem, FoodAdapter.ItemViewHolder>(D
         private var tvName: TextView = binding.tvFoodName
 
         fun bind(food: FoodsResponseItem) {
-            Glide.with(binding.imgFood.context)
-                .load(food.foodGambars)
-                .into(binding.imgFood)
+            binding.imgFood.setImageExt(food.foodGambars.first().gambar)
             binding.tvFoodName.text = food.nama
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailActivity::class.java)
-//                intent.putExtra(DetailActivity.DETAIL_FOOD, food)
+                val intent = Intent(itemView.context, ResultActivity::class.java)
+                intent.putExtra(ResultActivity.EXTRA_DETAIL, food.toMLFoodResponse())
                 val optionsCompat: ActivityOptionsCompat =
                     ActivityOptionsCompat.makeSceneTransitionAnimation(
                         itemView.context as Activity,

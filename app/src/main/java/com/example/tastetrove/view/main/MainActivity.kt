@@ -23,6 +23,7 @@ import com.example.tastetrove.ViewModelFactory
 import com.example.tastetrove.common.ext.startActivityExt
 import com.example.tastetrove.data.adapter.FoodAdapter
 import com.example.tastetrove.data.pref.Food
+import com.example.tastetrove.data.response.Result
 import com.example.tastetrove.databinding.ActivityMainBinding
 import com.example.tastetrove.view.favorite.FavoriteActivity
 import com.example.tastetrove.view.login.LoginActivity
@@ -160,12 +161,17 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupViewModel()
         setupAction()
+        viewModel.getFoods().observe(this){
+            when(it){
+                is Result.Error -> {}
+                Result.Loading -> {}
+                is Result.Success -> {
+                    foodAdapter.submitList(it.data)
+                }
+            }
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getFoods()
-    }
 
     private fun setupView() {
         @Suppress("DEPRECATION")
@@ -196,11 +202,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.foods.observe(this) { food ->
-            Log.d("MainActivity", "Updating adapter with stories: $food")
-            foodAdapter.submitList(food)
-            binding.loadingProgressBar.visibility = View.GONE
-        }
+//        viewModel.foods.observe(this) { food ->
+//            Log.d("MainActivity", "Updating adapter with stories: $food")
+//            foodAdapter.submitList(food)
+//            binding.loadingProgressBar.visibility = View.GONE
+//        }
     }
 
     private fun setupAction() {
@@ -230,7 +236,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadStories() {
-        binding.loadingProgressBar.visibility = View.VISIBLE
+        binding.loadingProgressBar.visibility = View.GONE
         lifecycleScope.launch {
             viewModel.getFoods()
         }

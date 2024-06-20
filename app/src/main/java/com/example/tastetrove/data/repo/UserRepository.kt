@@ -30,9 +30,18 @@ class UserRepository private constructor(
         return userPreference.getSession()
     }
 
-    suspend fun getFoods(): List<FoodsResponseItem>? {
-        val response = apiService.getFoods()
-        return if (!response.error!!) response.foodsResponse else null
+    fun getFoods(): LiveData<Result<List<FoodsResponseItem>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getFoods()
+            emit(Result.Success(response))
+        } catch (e: HttpException) {
+            Log.d("register", e.message.toString())
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error(errorMessage.toString()))
+        }
     }
     fun signup(
         name: String, email: String, pass: String

@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.example.tastetrove.common.base.BaseActivity
 import com.example.tastetrove.common.ext.getExtraExt
 import com.example.tastetrove.common.ext.gone
+import com.example.tastetrove.common.ext.setImageExt
 import com.example.tastetrove.common.ext.showToast
 import com.example.tastetrove.common.ext.toPercent
 import com.example.tastetrove.common.ext.visible
@@ -25,12 +26,17 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
 
     companion object {
         const val EXTRA_IMAGE_URI = "extra_image_uri"
+        const val EXTRA_DETAIL = "extra_detail"
     }
 
     private val viewModel: ResultViewModel by viewModels()
 
     private val imageUri: Uri by lazy {
         Uri.parse(getExtraExt<String>(EXTRA_IMAGE_URI))
+    }
+
+    private val mlFoodResponse: MLFoodResponse by lazy {
+        getExtraExt<MLFoodResponse>(EXTRA_DETAIL)
     }
 
     private var label = ""
@@ -47,7 +53,15 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
         super.onCreate(savedInstanceState)
 
         // TODO: Menampilkan hasil gambar, prediksi, dan confidence score.
-        classify()
+
+        if (intent.hasExtra(EXTRA_DETAIL)){
+            binding.titleFood.text = mlFoodResponse.nama
+            binding.detailFood.text = mlFoodResponse.deskripsi
+            binding.imageFood.setImageExt(mlFoodResponse.image)
+            hasilApi=mlFoodResponse
+        } else {
+            classify()
+        }
 
         binding.apply {
             favoriteIcon.setOnClickListener {

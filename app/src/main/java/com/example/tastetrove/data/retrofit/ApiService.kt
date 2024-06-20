@@ -31,7 +31,7 @@ interface ApiService {
     ): LoginResponse
 
     @GET("food")
-    suspend fun getFoods() : FoodsResponse
+    suspend fun getFoods() : List<FoodsResponseItem>
 
     @Headers("Authorization: Bearer ${BuildConfig.BASE_URL}")
     @GET("user")
