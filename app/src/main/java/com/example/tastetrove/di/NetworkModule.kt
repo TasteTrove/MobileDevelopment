@@ -31,9 +31,8 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideMLFoodApiService(@ApplicationContext context: Context, userPreference: UserPreference): MLFoodApiService {
-        val token = runBlocking { userPreference.getSession().first().token }
-        return ApiConfig.apiService(context, token)
+    fun provideMLFoodApiService(@ApplicationContext context: Context): MLFoodApiService {
+        return ApiConfig.getApiService(context, "https://tastetrove-predict-v1-5ufiritwza-et.a.run.app")
     }
 
 }
