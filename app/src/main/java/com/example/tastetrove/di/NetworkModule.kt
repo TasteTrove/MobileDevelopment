@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.tastetrove.data.pref.UserPreference
 import com.example.tastetrove.data.retrofit.ApiConfig
 import com.example.tastetrove.data.retrofit.ApiService
+import com.example.tastetrove.data.retrofit.MLFoodApiService
 import com.example.tastetrove.data.retrofit.NewsApiService
 import com.example.tastetrove.util.NewsUrl
 import dagger.Module
@@ -25,8 +26,14 @@ class NetworkModule {
     }
 
     @Provides
-    fun providePublicApiService(@ApplicationContext context: Context): NewsApiService {
+    fun provideNewsApiService(@ApplicationContext context: Context): NewsApiService {
         return ApiConfig.getApiService(context, NewsUrl.BASE_URL)
+    }
+
+    @Provides
+    fun provideMLFoodApiService(@ApplicationContext context: Context, userPreference: UserPreference): MLFoodApiService {
+        val token = runBlocking { userPreference.getSession().first().token }
+        return ApiConfig.apiService(context, token)
     }
 
 }

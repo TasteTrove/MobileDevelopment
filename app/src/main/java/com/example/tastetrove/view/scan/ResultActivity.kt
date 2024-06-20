@@ -11,8 +11,9 @@ import com.example.tastetrove.common.ext.toPercent
 import com.example.tastetrove.data.model.HistoryModel
 import com.example.tastetrove.data.network.Resource
 import com.example.tastetrove.databinding.ActivityScanResultBinding
-import com.example.tastetrove.helper.ImageClassifierHelper
 import com.example.tastetrove.helper.ImageClassifierListener
+import com.example.tastetrove.util.reduceFileImage
+import com.example.tastetrove.util.uriToFile
 import dagger.hilt.android.AndroidEntryPoint
 import org.tensorflow.lite.task.vision.classifier.Classifications
 
@@ -23,7 +24,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
         const val EXTRA_IMAGE_URI = "extra_image_uri"
     }
 
-    private val viewModel : ResultViewModel by viewModels()
+    private val viewModel: ResultViewModel by viewModels()
 
     private val imageUri: Uri by lazy {
         Uri.parse(getExtraExt<String>(EXTRA_IMAGE_URI))
@@ -58,6 +59,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
                 is Resource.Error -> {
                     // showToast("Error Menyimpan History")
                 }
+
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     // showToast("Success Menyimpan History")
@@ -70,6 +72,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
                 is Resource.Error -> {
                     showToast("Error Menyimpan Favorite")
                 }
+
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     showToast("Success Menyimpan Favorite")
@@ -77,13 +80,37 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
                 }
             }
         }
+
+        viewModel.analyzeState.observe(this) {
+            when (it) {
+                is Resource.Error -> {
+                    showToast(it.message.toString())
+                    Log.d("Error Upload File", it.message.toString())
+                }
+
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    it.data?.let { food ->
+                        binding.titleFood.text = food.nama
+                        binding.detailFood.text = food.deskripsi
+                    }
+                }
+            }
+        }
+
     }
 
     private fun classify() {
         imageUri.let {
             Log.d("Image URI", "showImage: $it")
             binding.imageFood.setImageURI(it)
-            ImageClassifierHelper(this).classifyStaticImage(this, imageUri)
+
+
+            val imageFile = uriToFile(it, this).reduceFileImage()
+            Log.d("Image File", "showImage: ${imageFile.path}")
+
+            viewModel.analyze(imageFile)
+            // ImageClassifierHelper(this).classifyStaticImage(this, imageUri)
         }
     }
 
@@ -98,7 +125,8 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
             if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
                 val highestScoreCategory = it[0].categories.maxByOrNull { it.score }
                 if (highestScoreCategory != null) {
-                    resultText = "${highestScoreCategory.label} " + highestScoreCategory.score.toPercent()
+                    resultText =
+                        "${highestScoreCategory.label} " + highestScoreCategory.score.toPercent()
                     label = highestScoreCategory.label
                     score = highestScoreCategory.score.toPercent()
                 } else {
