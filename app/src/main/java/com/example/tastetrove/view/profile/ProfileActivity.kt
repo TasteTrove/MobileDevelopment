@@ -41,22 +41,13 @@ class ProfileActivity : AppCompatActivity() {
         setupAction()
         setupViewModel()
 
-
-        val user = intent.getStringExtra("nama")
-
-        if (user != null) {
-            val profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-            profileViewModel.isLoading.observe(this) {
-                showLoading(it)
-            }
-            profileViewModel.getUser(this, user)
-            profileViewModel.user.observe(this) { user ->
-                user?.let {
-                    binding.tvUser.text = it.userResponse.nama ?: ""
-                    binding.tvEmail.text = it.userResponse.email ?: ""
-                }
+        viewModel.getSession().observe(this) { user ->
+            user?.let {
+                binding.tvUser.text = user.name ?: ""
+                binding.tvEmail.text = user.email ?: ""
             }
         }
+
     }
 
 

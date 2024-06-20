@@ -63,10 +63,11 @@ class LoginActivity : AppCompatActivity() {
                         }
                         is Result.Success -> {
                             showLoading(false)
-                            it.data.loginResult.token.let { result ->
+                            it.data.loginResult.let { result ->
                                 setupAction(
                                     it.data.message,
-                                    result
+                                    result.name,
+                                    result.token
                                 )
                             }
                         }
@@ -76,10 +77,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupAction(message: String, token: String) {
+    private fun setupAction(message: String, name: String, token: String) {
 
         val email = binding.emailEditText.text.toString()
-        viewModel.saveSession(UserModel(email, token))
+        viewModel.saveSession(UserModel(email, name, token))
 
         AlertDialog.Builder(this).apply {
             val intent = Intent(context, MainActivity::class.java)
