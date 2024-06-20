@@ -6,9 +6,12 @@ import android.util.Log
 import androidx.activity.viewModels
 import com.example.tastetrove.common.base.BaseActivity
 import com.example.tastetrove.common.ext.getExtraExt
+import com.example.tastetrove.common.ext.gone
 import com.example.tastetrove.common.ext.showToast
 import com.example.tastetrove.common.ext.toPercent
+import com.example.tastetrove.common.ext.visible
 import com.example.tastetrove.data.model.HistoryModel
+import com.example.tastetrove.data.model.api.ml.MLFoodResponse
 import com.example.tastetrove.data.network.Resource
 import com.example.tastetrove.databinding.ActivityScanResultBinding
 import com.example.tastetrove.helper.ImageClassifierListener
@@ -34,6 +37,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
     private var score = ""
 
     private var dataScan = HistoryModel()
+    private var hasilApi = MLFoodResponse()
 
     override fun setupViewBinding(): ActivityScanResultBinding {
         return ActivityScanResultBinding.inflate(layoutInflater)
@@ -47,7 +51,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
 
         binding.apply {
             favoriteIcon.setOnClickListener {
-                viewModel.insertFav(dataScan.toFavoriteModel())
+                viewModel.insertFav(hasilApi.toFavoriteModel())
             }
         }
     }
@@ -71,6 +75,8 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
             when (it) {
                 is Resource.Error -> {
                     showToast("Error Menyimpan Favorite")
+
+                    Log.d("nama",it.message.toString())
                 }
 
                 is Resource.Loading -> {}
@@ -84,15 +90,26 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
         viewModel.analyzeState.observe(this) {
             when (it) {
                 is Resource.Error -> {
+                    binding.loading.gone()
                     showToast(it.message.toString())
                     Log.d("Error Upload File", it.message.toString())
                 }
 
-                is Resource.Loading -> {}
+                is Resource.Loading -> {
+                    binding.loading.visible()
+                }
                 is Resource.Success -> {
+                    binding.loading.gone()
                     it.data?.let { food ->
                         binding.titleFood.text = food.nama
                         binding.detailFood.text = food.deskripsi
+                        hasilApi.nama = food.nama
+                        hasilApi.lokasi = food.lokasi
+                        hasilApi.deskripsi = food.deskripsi
+                        dataScan.nama = food.nama
+                        dataScan.lokasi = food.lokasi
+                        dataScan.deskripsi = food.lokasi
+                        viewModel.insertData(dataScan)
                     }
                 }
             }
@@ -104,7 +121,8 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
         imageUri.let {
             Log.d("Image URI", "showImage: $it")
             binding.imageFood.setImageURI(it)
-
+            hasilApi.image = it.toString()
+            dataScan.image = it.toString()
 
             val imageFile = uriToFile(it, this).reduceFileImage()
             Log.d("Image File", "showImage: ${imageFile.path}")
@@ -134,12 +152,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
                 }
             }
             binding.titleFood.text = resultText
-            dataScan = HistoryModel(
-                image = imageUri.toString(),
-                label = label,
-                score = score
-            )
-            viewModel.insertData(dataScan)
+
         }
     }
 

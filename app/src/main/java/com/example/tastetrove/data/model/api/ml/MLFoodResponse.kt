@@ -6,6 +6,7 @@ import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.tastetrove.data.model.FavoriteFoodModel
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -29,4 +30,22 @@ data class MLFoodResponse(
     @ColumnInfo("nama")
     var nama: String? = "",
 
-) : Parcelable
+    @SerializedName("image")
+    @ColumnInfo("image")
+    var image: String? = "",
+
+) : Parcelable {
+
+    fun toFavoriteModel(images: String? ="") : FavoriteFoodModel{
+        return FavoriteFoodModel(
+            deskripsi = deskripsi,
+            lokasi = lokasi,
+            nama = nama,
+            image = if (images ==""){
+                image
+            } else {
+                images
+            }
+        )
+    }
+}

@@ -31,7 +31,7 @@ interface FavoriteFoodDao {
     @Query("DELETE FROM favorite_food")
     fun nuke()
 
-    @Query("SELECT * FROM favorite_food WHERE login LIKE '%' || :search || '%' ORDER BY table_id DESC")
+    @Query("SELECT * FROM favorite_food WHERE nama LIKE '%' || :search || '%' ORDER BY table_id DESC")
     fun getByUserName(search: String): LiveData<FavoriteFoodModel>
 
 }

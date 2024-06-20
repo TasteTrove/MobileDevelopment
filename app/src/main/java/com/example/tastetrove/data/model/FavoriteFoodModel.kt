@@ -5,6 +5,7 @@ import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "favorite_food")
@@ -15,13 +16,20 @@ data class FavoriteFoodModel(
     @ColumnInfo(name = "table_id")
     var table_id: Int = 0,
 
-    @ColumnInfo("login")
+    @SerializedName("deskripsi")
+    @ColumnInfo("deskripsi")
+    var deskripsi: String? = "",
+
+    @SerializedName("lokasi")
+    @ColumnInfo("lokasi")
+    var lokasi: String? = "",
+
+    @SerializedName("nama")
+    @ColumnInfo("nama")
+    var nama: String? = "",
+
+    @SerializedName("image")
+    @ColumnInfo("image")
     var image: String? = "",
-
-    @ColumnInfo("label")
-    var label: String? = "",
-
-    @ColumnInfo("score")
-    var score: String? = ""
 
  ) : Parcelable

@@ -12,8 +12,8 @@ class HistoryViewHolder(
 
     fun bind(data: HistoryModel) {
         binding.apply {
-            tvUsername.text = data.label
-            tvLink.text = data.score
+            tvUsername.text = data.nama
+            tvLink.text = data.lokasi
             iv.setImageExt(data.image)
             root.setOnClickListener {
                 listener?.onClickListener(data)

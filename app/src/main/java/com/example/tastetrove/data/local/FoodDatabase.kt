@@ -15,7 +15,7 @@ import com.yalantis.ucrop.BuildConfig
     entities = [
         HistoryModel::class,
         FavoriteFoodModel::class
-    ], version = 1
+    ], version = 3
 )
 abstract class FoodDatabase : RoomDatabase() {
 

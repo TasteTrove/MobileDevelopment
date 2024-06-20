@@ -31,7 +31,7 @@ interface HistoryDao {
     @Query("DELETE FROM history_scan")
     fun nuke()
 
-    @Query("SELECT * FROM history_scan WHERE login LIKE '%' || :search || '%' ORDER BY table_id DESC")
+    @Query("SELECT * FROM history_scan WHERE nama LIKE '%' || :search || '%' ORDER BY table_id DESC")
     fun getByUserName(search: String): LiveData<HistoryModel>
 
 }

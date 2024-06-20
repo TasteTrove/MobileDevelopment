@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "9ab7c9b445927ee5e6868568f6f07f3a",
+    "version": 3,
+    "identityHash": "e79caf93c9175262ed8531ddd06ef352",
     "entities": [
       {
         "tableName": "history_scan",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`table_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `login` TEXT, `label` TEXT, `score` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`table_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `deskripsi` TEXT, `lokasi` TEXT, `nama` TEXT, `image` TEXT)",
         "fields": [
           {
             "fieldPath": "table_id",
@@ -15,20 +15,26 @@
             "notNull": true
           },
           {
+            "fieldPath": "deskripsi",
+            "columnName": "deskripsi",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lokasi",
+            "columnName": "lokasi",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nama",
+            "columnName": "nama",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "image",
-            "columnName": "login",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "label",
-            "columnName": "label",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "score",
-            "columnName": "score",
+            "columnName": "image",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -90,7 +96,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9ab7c9b445927ee5e6868568f6f07f3a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e79caf93c9175262ed8531ddd06ef352')"
     ]
   }
 }
