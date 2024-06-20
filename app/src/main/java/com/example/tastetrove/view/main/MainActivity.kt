@@ -28,6 +28,7 @@ import com.example.tastetrove.view.favorite.FavoriteActivity
 import com.example.tastetrove.view.login.LoginActivity
 import com.example.tastetrove.view.profile.ProfileActivity
 import com.example.tastetrove.view.scan.ScanActivity
+import com.example.tastetrove.view.search.SearchActivity
 import com.example.tastetrove.view.welcome.WelcomeActivity
 import kotlinx.coroutines.launch
 
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         rvFood = findViewById(R.id.rvFood)
         rvFood.setHasFixedSize(true)
 
-        list.addAll(getListLandmark())
+        list.addAll(getListFood())
         showRecyclerList()
         loadStories()
         setupViewModel()
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun getListLandmark(): ArrayList<Food> {
+    private fun getListFood(): ArrayList<Food> {
         val dataName = resources.getStringArray(R.array.data_food)
         val dataDescription = resources.getStringArray(R.array.data_description)
         val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
@@ -77,8 +78,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun showRecyclerList() {
         rvFood.layoutManager = LinearLayoutManager(this)
-        val listLandMarkAdapter = FoodAdapter(list)
-        rvFood.adapter = listLandMarkAdapter
+        val listFoodAdapter = FoodAdapter(list)
+        rvFood.adapter = listFoodAdapter
     }
 
     private fun setupAction() {
@@ -104,11 +105,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.btnSearch.setOnClickListener{
-//            startActivityExt<SearchActivity> {
-//
-//            }
-//        }
+        binding.btnSearch.setOnClickListener{
+            startActivityExt<SearchActivity> {
+
+            }
+        }
     }
 
         private fun setupViewModel() {
@@ -134,7 +135,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.getStories()
         }
     }
-
 
 }
 

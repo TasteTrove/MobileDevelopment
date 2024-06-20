@@ -15,6 +15,7 @@ import com.example.tastetrove.databinding.ActivityProfileBinding
 import com.example.tastetrove.view.favorite.FavoriteActivity
 import com.example.tastetrove.view.main.MainActivity
 import com.example.tastetrove.view.scan.ScanActivity
+import com.example.tastetrove.view.search.SearchActivity
 //import com.example.tastetrove.view.search.SearchActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -71,11 +72,11 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-//        binding.btnSearch.setOnClickListener{
-//            startActivityExt<SearchActivity> {
-//
-//            }
-//        }
+        binding.btnSearch.setOnClickListener{
+            startActivityExt<SearchActivity> {
+
+            }
+        }
 
         binding.btnHome.setOnClickListener{
             startActivityExt<MainActivity> {

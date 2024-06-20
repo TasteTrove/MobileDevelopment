@@ -25,6 +25,7 @@ import com.example.tastetrove.view.main.MainActivity
 import com.example.tastetrove.view.picker.CameraActivity
 import com.example.tastetrove.view.picker.CameraActivity.Companion.CAMERAX_RESULT
 import com.example.tastetrove.view.profile.ProfileActivity
+import com.example.tastetrove.view.search.SearchActivity
 //import com.example.tastetrove.view.search.SearchActivity
 import com.yalantis.ucrop.UCrop
 import dagger.hilt.android.AndroidEntryPoint
@@ -178,11 +179,11 @@ class ScanActivity : BaseActivity<ActivityScanBinding>() {
             }
         }
 
-//        binding.btnSearch.setOnClickListener{
-//            startActivityExt<SearchActivity> {
-//
-//            }
-//        }
+        binding.btnSearch.setOnClickListener{
+            startActivityExt<SearchActivity> {
+
+            }
+        }
 
         binding.btnHome.setOnClickListener{
             startActivityExt<MainActivity> {
