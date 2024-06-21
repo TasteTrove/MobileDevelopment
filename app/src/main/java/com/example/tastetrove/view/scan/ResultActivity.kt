@@ -118,6 +118,7 @@ class ResultActivity : BaseActivity<ActivityScanResultBinding>(), ImageClassifie
                     it.data?.let { food ->
                         binding.titleFood.text = food.nama
                         binding.detailFood.text = food.deskripsi
+                        binding.lokasiFood.text = food.lokasi
                         hasilApi.nama = food.nama
                         hasilApi.lokasi = food.lokasi
                         hasilApi.deskripsi = food.deskripsi
